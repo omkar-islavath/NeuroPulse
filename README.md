@@ -1,4 +1,4 @@
-# Simon Game – Full Stack
+#NeuroPulse
 
 A full-stack implementation of the classic **Simon memory game** with user authentication, persistent scores, and a leaderboard. Players must remember and repeat an increasingly long sequence of colors. The project includes a responsive UI and a backend that stores user accounts and scores.
 
