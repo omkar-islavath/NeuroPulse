@@ -1,11 +1,11 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Simon Game</title>
+    <title>NeuroPulse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-
-  <body>
+  <body class="game-body">
     <!-- Navbar -->
     <div class="navbar">
       <span id="user-email"></span>
@@ -15,28 +15,35 @@
       </div>
     </div>
 
-    <h1 id="level-title">Simon Game</h1>
+    <!-- Round flash overlay -->
+    <div class="round-flash" id="round-flash"></div>
+
+    <h1 id="level-title">NeuroPulse</h1>
 
     <div class="score-board">
-      <span id="level-display">Level: 0</span>
-      <span id="high-score">High Score: 0</span>
+      <span id="level-display">LEVEL: 0</span>
+      <span id="high-score">BEST: 0</span>
     </div>
 
-    <button id="start-btn" class="start-btn">Start Game</button>
-    <button id="restart-btn" class="start-btn" style="display: none">
-      Restart
-    </button>
+    <div class="game-action-btns">
+      <button id="start-btn" class="start-btn">START GAME</button>
+      <button id="restart-btn" class="restart-btn">RESTART</button>
+    </div>
 
-    <div class="container">
-      <div class="row">
+    <!-- Simon Board -->
+    <div class="simon-board">
+      <div class="simon-ring"></div>
+      <div class="container">
         <div id="green" class="btn green"></div>
         <div id="red" class="btn red"></div>
-      </div>
-
-      <div class="row">
         <div id="yellow" class="btn yellow"></div>
         <div id="blue" class="btn blue"></div>
       </div>
+    </div>
+
+    <!-- Streak progress bar -->
+    <div class="streak-bar">
+      <div class="streak-fill" id="streak-fill"></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -45,11 +52,7 @@
 
     <script>
       const email = localStorage.getItem("email");
-
-      if (!email) {
-        window.location.href = "login.html";
-      }
-
+      if (!email) window.location.href = "login.html";
       document.getElementById("user-email").textContent = "Welcome: " + email;
 
       function logout() {
